@@ -1,9 +1,11 @@
 package com.example.CryptoCezarWeb.domen;
 
 
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 @Component
+@Getter
 public class Crypto extends BaseCrypto {
 
 
@@ -52,6 +54,4 @@ public class Crypto extends BaseCrypto {
         return cycle(stringBuilder.reverse().toString(),  true)
                 .reverse().toString();
     }
-
-
 }

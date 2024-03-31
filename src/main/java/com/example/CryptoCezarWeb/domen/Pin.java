@@ -1,8 +1,12 @@
 package com.example.CryptoCezarWeb.domen;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 @Component
+@Setter
+@Getter
 public class Pin {
     private int pinNumber = 1206100;
 
@@ -13,10 +17,10 @@ public class Pin {
     public Pin(){}
 
 
-    public int getPinNumber()
-    {
-        return pinNumber;
-    }
+//    public int getPinNumber()
+//    {
+//        return pinNumber;
+//    }
     public int getDigitLength()
     {
         return toString().length();
