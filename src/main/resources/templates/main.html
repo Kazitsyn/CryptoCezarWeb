@@ -14,19 +14,34 @@
 <body>
 <div class="container">
 <form action="#" th:action="@{/main}" th:object="${formData}" method="post" class="form-custom">
-  <h1 class="display-4">PinCode</h1>
+  <h1 class="display-4">Crypto order</h1>
+
+  <div class="mb-3">
+    <label for="word" class="form-label">Word</label>
+    <input type="text" th:field="*{word}" id="word" placeholder="word" class="form-control">
+    <br/>
+  </div>
   <div class="mb-3">
     <label for="pinCode" class="form-label">PinCode</label>
     <input type="text" th:field="*{pinCode}" id="pinCode" placeholder="pinCode" class="form-control">
     <br/>
   </div>
   <div class="mb-3">
-    <label for="word" class="form-label">Word</label>
-    <input type="text" th:field="*{word}" id="word" placeholder="word" class="form-control">
+    <label for="passwordSize" class="form-label">Password size</label>
+    <input type="text" th:field="*{passwordSize}" id="passwordSize" placeholder="passwordSize" class="form-control">
     <br/>
   </div>
+  <div class="mb-3">
+    <label for="layout" class="form-label">Layout</label>
+    <select th:field="*{layout}" id="layout" >
+      <option th:each="item : ${items}" th:value="${item}" th:text="${item}"></option>
+    </select>
+    <br/>
+  </div>
+
   <input type="submit" class="btn btn-primary" value="Do Cesar shift">
 </form>
+
 </div>
 </body>
 </html>

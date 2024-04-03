@@ -1,5 +1,6 @@
 package com.example.CryptoCezarWeb.domen;
 
+import com.example.CryptoCezarWeb.service.PinCodeService;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
@@ -8,30 +9,25 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 public class BaseCrypto {
-    protected Pin pin;
+
+    protected final PinCodeService pinCodeService;
+    protected int pin = 1206100;
     protected Layout layout;
     protected Cesar cesar;
     protected int passwordSize = 8;
 
     /**
      * Базовый конструктор класса Crypto
-     * @param pin pin-код
      * @param layout последовательность
      * @param cesar сдвиг Цезаря
      */
-    public BaseCrypto(Pin pin, Layout layout, Cesar cesar)
+    public BaseCrypto(PinCodeService pinCodeService, Layout layout, Cesar cesar)
     {
-        this.pin = pin;
+        this.pinCodeService = pinCodeService;
         this.layout = layout;
         this.cesar = cesar;
     }
 
-    public int getPasswordSize() {
-        return passwordSize;
-    }
-    public void setPasswordSize(int passwordSize) {
-        this.passwordSize = passwordSize;
-    }
 
 
     /**
@@ -49,19 +45,20 @@ public class BaseCrypto {
 
             if (pinGetReversedNumberOfCharArray)
             {
-                if (pin.getDigitLength() < i+1){
-                    int shift = pin.getReversedNumberOfCharArray()[i-pin.getDigitLength()]-'0';
+                if (pinCodeService.getDigitLength(pin) < i+1){
+                    int shift = pinCodeService
+                            .getReversedNumberOfCharArray(pin)[i-pinCodeService.getDigitLength(pin)]-'0';
                     char res = cesar.getShift(index, shift);
                     result.append(res);
                     continue;
                 }
-                int shift = pin.getReversedNumberOfCharArray()[i]-'0';
+                int shift = pinCodeService.getReversedNumberOfCharArray(pin)[i]-'0';
                 char res = cesar.getShift(index, shift);
                 result.append(res);
             }
             else
             {
-                int shift = pin.getDigitOfTheNumber(i);
+                int shift = pinCodeService.getDigitOfTheNumber(i, pin);
                 char res = cesar.getShift(index, shift);
                 result.append(res);
             }
