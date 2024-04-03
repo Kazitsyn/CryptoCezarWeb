@@ -1,6 +1,7 @@
 package com.example.CryptoCezarWeb.domen;
 
 
+import com.example.CryptoCezarWeb.service.PinCodeService;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +13,11 @@ public class Crypto extends BaseCrypto {
     /**
      * Базовый конструктор класса Crypto
      *
-     * @param pin    pin-код
      * @param layout последовательность
      * @param cesar  сдвиг Цезаря
      */
-    public Crypto(Pin pin, Layout layout, Cesar cesar) {
-        super(pin, layout, cesar);
+    public Crypto(PinCodeService pinCodeService, Layout layout, Cesar cesar) {
+        super(pinCodeService, layout, cesar);
     }
 
     /**

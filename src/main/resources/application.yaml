@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: CryptoCezarWeb
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-aql: true

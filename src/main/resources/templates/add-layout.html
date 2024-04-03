@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Base crypto</title>
+    <title>Add layout</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,36 +13,26 @@
 </head>
 <body>
 <div class="container">
-<form action="#" th:action="@{/main}" th:object="${formData}" method="post" class="form-custom">
-  <h1 class="display-4">Crypto order</h1>
 
-  <div class="mb-3">
-    <label for="word" class="form-label">Word</label>
-    <input type="text" th:field="*{word}" id="word" placeholder="word" class="form-control">
-    <br/>
-  </div>
-  <div class="mb-3">
-    <label for="pinCode" class="form-label">PinCode</label>
-    <input type="text" th:field="*{pinCode}" id="pinCode" placeholder="pinCode" class="form-control">
-    <br/>
-  </div>
-  <div class="mb-3">
-    <label for="passwordSize" class="form-label">Password size</label>
-    <input type="text" th:field="*{passwordSize}" id="passwordSize" placeholder="passwordSize" class="form-control">
-    <br/>
-  </div>
-  <div class="mb-3">
-    <label for="layout" class="form-label">Layout</label>
-    <select th:field="*{layout}" id="layout" >
-      <option th:each="item : ${items}" th:value="${item}" th:text="${item}"></option>
-    </select>
-    <br/>
-  </div>
+    <form action="#" th:action="@{/add-layout}" th:object="${layoutEntity}" method="post" class="form-custom">
+        <h1 class="display-4">Add layout</h1>
 
-  <input type="submit" class="btn btn-primary" value="Do Cesar shift">
-</form>
+        <div class="mb-3">
+            <label for="title" class="form-label">title</label>
+            <input type="text" th:field="*{title}" id="title" placeholder="Title" class="form-control">
+            <br/>
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">content</label>
+            <input type="text" th:field="*{content}" id="content" placeholder="Content" class="form-control">
+            <br/>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Add layout">
+    </form>
 
 </div>
+
 
 <div class="container">
 
@@ -72,11 +62,10 @@
 
             <td th:text="${layout.getStatusBuild}"></td>
 
-
+<!--            <td><a class="new-task" th:href="@{/task-create/{id}(id=${user.id})}" type="button">give new task</a></td>-->
 
         </tr>
         </tbody>
-        <td><a class="new-layout" th:href="@{/add-layout}" type="button">new layout</a></td>
     </table>
 </div>
 </body>

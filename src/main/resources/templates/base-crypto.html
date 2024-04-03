@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>base-crypto</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/base-crypto}" th:object="${formData}" method="post">
+    <label for="pinCode">Pin-код</label>
+    <input type="text" th:field="*{formData.pinCode}" id="pinCode" placeholder="pinCode">
+    <label for="word">Word</label>
+    <input type="text" th:field="*{formData.word}" id="word" placeholder="word">
+    <input type="submit" value="Go">
+</form>
+</body>
+</html>

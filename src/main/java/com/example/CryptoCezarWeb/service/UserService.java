@@ -16,7 +16,7 @@ public class UserService {
         return crypto.getCryptoCesarWord(word);
     }
     public String baseCrypto(String word, int pinCode){
-        crypto.getPin().setPinNumber(pinCode);
+//        crypto.getPin().setPinNumber(pinCode);
         return crypto.getCryptoCesarWord(word);
     }
 }
