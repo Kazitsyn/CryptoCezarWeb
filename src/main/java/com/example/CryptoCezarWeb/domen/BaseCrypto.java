@@ -1,13 +1,13 @@
 package com.example.CryptoCezarWeb.domen;
 
 import com.example.CryptoCezarWeb.service.PinCodeService;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 @Component
-@Getter
-@Setter
+@Data
 public class BaseCrypto {
 
     protected final PinCodeService pinCodeService;
@@ -39,9 +39,10 @@ public class BaseCrypto {
     protected StringBuilder cycle(String word, boolean pinGetReversedNumberOfCharArray)
     {
         StringBuilder result = new StringBuilder();
-        for(int i = 0; i < passwordSize; i++)
+        for(int i = 0; i < passwordSize-1; i++)
         {
-            int index = layout.getIndexChar(word.toCharArray()[i]);
+            int indexForChar = enumerationIndex(i,word);
+            int index = layout.getIndexChar(word.toCharArray()[indexForChar]);
 
             if (pinGetReversedNumberOfCharArray)
             {
@@ -59,23 +60,47 @@ public class BaseCrypto {
             else
             {
                 int shift = pinCodeService.getDigitOfTheNumber(i, pin);
+//                if (pinCodeService.getDigitLength(pin) < i+1){
+//                    shift = pinCodeService
+//                            .getDigitOfTheNumber(i-pinCodeService.getDigitLength(pin),pin);
+//                }
                 char res = cesar.getShift(index, shift);
                 result.append(res);
             }
         }
-        changeRegisterAndAddNumber(result, word.length()%10);
+        changeRegisterAndAddNumber(result, getIndexForNumber(word));
         return result;
     }
 
     /**
-     * Метод изменения регистра по индексу и замены последнего элемента на индекс
+     * Метод изменения регистра по индексу и замены последнего элемента на этот индекс
      * @param word исходное слово
      * @param index индекс
      */
-    protected void changeRegisterAndAddNumber(StringBuilder word, int index){
+    private void changeRegisterAndAddNumber(StringBuilder word, int index){
         char ch = word.charAt(index);
         word.setCharAt(index,Character.toUpperCase(ch));
-        word.deleteCharAt(word.length()-1);
+//        word.deleteCharAt(word.length()-1);
         word.append(index);
+    }
+
+    /**
+     * Метод определения индекса в котом будет изменен регистр
+     * @param word исходное слово
+     * @return индекс
+     */
+    private int getIndexForNumber(String word){
+        int result = word.length()%10;
+        while (word.length() <= result){
+            result = result - word.length();
+        }
+        return result;
+    }
+
+    private int enumerationIndex(int index, String word){
+        while (word.length() <= index){
+            index = index - word.length();
+        }
+        return index;
     }
 }

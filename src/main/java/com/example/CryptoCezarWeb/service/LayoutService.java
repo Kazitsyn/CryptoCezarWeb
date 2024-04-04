@@ -28,5 +28,9 @@ public class LayoutService {
         layoutRepository.save(layout);
     }
 
+    public LayoutEntity getLayoutEntityById(Long id){
+        return layoutRepository.getById(id);
+    }
+
 
 }

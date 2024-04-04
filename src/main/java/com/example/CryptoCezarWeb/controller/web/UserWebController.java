@@ -61,7 +61,7 @@ public class UserWebController {
         List<LayoutEntity> entity = layoutService.findAll();
         List<String> items = new ArrayList<>();
         entity.forEach(entityLayout -> {
-            items.add(entityLayout.getTitle());
+            items.add(entityLayout.getId().toString() +": "+entityLayout.getTitle());
         });
         model.addAttribute("items", items);
         model.addAttribute("layouts", entity);

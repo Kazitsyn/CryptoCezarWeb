@@ -20,14 +20,24 @@ public class CryptoService {
     public void init(FormData formData){
         crypto.setPin(formData.getPinCode());
         crypto.setPasswordSize(formData.getPasswordSize());
-        LayoutEntity layout = layoutService.getFirstLayoutEntityByTitle(formData.getLayout());
+        LayoutEntity layout = layoutService.getLayoutEntityById(filterLongId(formData.getLayout()));
         crypto.getLayout().setLayout(layout.getContent().toCharArray());
-        this.word = formData.getWord();
+        this.word = filterCutDomain(formData.getWord());
 
     }
 
     public String cezar(){
         return crypto.getCryptoCesarWord(word);
+    }
+
+    private String filterCutDomain(String word){
+        return word.replaceAll("\\.\\w+$", "");
+    }
+
+    private Long filterLongId(String word){
+        int colonIndex = word.indexOf(':');
+        String temp = word.substring(0,colonIndex);
+        return Long.valueOf(temp) ;
     }
 
 }

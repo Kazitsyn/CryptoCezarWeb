@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Component
 @Getter
 @Setter
@@ -48,5 +50,10 @@ public class Layout {
     public int getSize()
     {
         return layout.length;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(layout);
     }
 }
