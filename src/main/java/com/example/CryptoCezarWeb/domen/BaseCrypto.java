@@ -59,11 +59,8 @@ public class BaseCrypto {
             }
             else
             {
-                int shift = pinCodeService.getDigitOfTheNumber(i, pin);
-//                if (pinCodeService.getDigitLength(pin) < i+1){
-//                    shift = pinCodeService
-//                            .getDigitOfTheNumber(i-pinCodeService.getDigitLength(pin),pin);
-//                }
+                int shift = pinCodeService.
+                        getDigitOfTheNumber(enumerationIndex(i, pinCodeService.getStringNumber(pin)),pin);
                 char res = cesar.getShift(index, shift);
                 result.append(res);
             }

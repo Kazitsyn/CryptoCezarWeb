@@ -4,6 +4,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PinCodeService {
+    public String getStringNumber(int pinNumber){
+        return String.valueOf(pinNumber);
+    }
 
     public int getDigitLength(int pinNumber)
     {
