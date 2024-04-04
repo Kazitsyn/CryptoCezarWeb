@@ -27,7 +27,7 @@ public class Crypto extends BaseCrypto {
      */
     public String getCryptoCesarWord(String word)
     {
-        return cycle(word,  false).toString();
+        return cycle(word).toString();
     }
 
     /**

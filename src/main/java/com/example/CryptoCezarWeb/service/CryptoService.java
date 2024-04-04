@@ -22,6 +22,7 @@ public class CryptoService {
         crypto.setPasswordSize(formData.getPasswordSize());
         LayoutEntity layout = layoutService.getLayoutEntityById(filterLongId(formData.getLayout()));
         crypto.getLayout().setLayout(layout.getContent().toCharArray());
+        crypto.setWordSize(formData.getWord().length());
         this.word = filterCutDomain(formData.getWord());
 
     }

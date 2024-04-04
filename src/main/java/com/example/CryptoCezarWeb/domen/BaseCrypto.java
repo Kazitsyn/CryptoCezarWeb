@@ -15,9 +15,11 @@ public class BaseCrypto {
     protected Layout layout;
     protected Cesar cesar;
     protected int passwordSize = 8;
+    protected int wordSize;
 
     /**
      * Базовый конструктор класса Crypto
+     * @param pinCodeService сервисный класс пин-кода
      * @param layout последовательность
      * @param cesar сдвиг Цезаря
      */
@@ -28,10 +30,62 @@ public class BaseCrypto {
         this.cesar = cesar;
     }
 
-
-
     /**
      * Внутренний  метод класса, базовый алгоритм.
+     * @param word введённое слово
+     * @return зашифрованное слово
+     */
+    protected StringBuilder cycle(String word)
+    {
+        StringBuilder result = new StringBuilder();
+        for(int i = 0; i < passwordSize-1; i++)
+        {
+            int index = layout.getIndexChar(word.toCharArray()[enumerationIndex(i,word)]);
+            int shift = pinCodeService.
+                    getDigitOfTheNumber(enumerationIndex(i, pinCodeService.getStringNumber(pin)),pin);
+            char res = cesar.getShift(index, shift);
+            result.append(res);
+        }
+        changeRegisterAndAddNumber(result, getIndexForNumber(word));
+        return result;
+    }
+    /**
+     * Метод изменения регистра по индексу и замены последнего элемента на этот индекс
+     * @param word исходное слово
+     * @param index индекс
+     */
+    private void changeRegisterAndAddNumber(StringBuilder word, int index){
+        char ch = word.charAt(index);
+        word.setCharAt(index,Character.toUpperCase(ch));
+        word.append(index);
+    }
+
+    /**
+     * Определения индекса в случае когда он не в грацах слова
+     * @param index исходный индекс
+     * @param word исходное слово
+     * @return новый индекс
+     */
+    private int enumerationIndex(int index, String word){
+        while (word.length() <= index){
+            index = index - word.length();
+        }
+        return index;
+    }
+    /**
+     * Метод определения индекса в котом будет изменен регистр
+     * @param word исходное слово
+     * @return индекс
+     */
+    private int getIndexForNumber(String word){
+        int result = wordSize % 10;
+        while (wordSize <= result){
+            result = result - word.length();
+        }
+        return result;
+    }
+    /**
+     * Внутренний  метод класса, базовый алгоритм.(перегрузка)
      * @param word введённое слово
      * @param pinGetReversedNumberOfCharArray разворот числа?
      * @return зашифрованное слово
@@ -69,35 +123,7 @@ public class BaseCrypto {
         return result;
     }
 
-    /**
-     * Метод изменения регистра по индексу и замены последнего элемента на этот индекс
-     * @param word исходное слово
-     * @param index индекс
-     */
-    private void changeRegisterAndAddNumber(StringBuilder word, int index){
-        char ch = word.charAt(index);
-        word.setCharAt(index,Character.toUpperCase(ch));
-//        word.deleteCharAt(word.length()-1);
-        word.append(index);
-    }
 
-    /**
-     * Метод определения индекса в котом будет изменен регистр
-     * @param word исходное слово
-     * @return индекс
-     */
-    private int getIndexForNumber(String word){
-        int result = word.length()%10;
-        while (word.length() <= result){
-            result = result - word.length();
-        }
-        return result;
-    }
 
-    private int enumerationIndex(int index, String word){
-        while (word.length() <= index){
-            index = index - word.length();
-        }
-        return index;
-    }
+
 }

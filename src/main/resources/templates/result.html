@@ -10,12 +10,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <script th:inline="javascript">
+    function copyToClipboard() {
+      var copyText = document.getElementById("message");
+      copyText.select();
+      document.execCommand("copy");
+    }
+  </script>
 </head>
 <body>
     <div class="mb-3">
-        <label for="result" class="display-4"></label>
-        <h2 class="display-4">Result crypto task: </h2>
-        <h2 th:text="${message}" id="result" class="display-4"></h2>
+        <h3 class="form-control">Result crypto task: </h3>
+        <input type="text" id="message" th:value="${message}" readonly class="form-label">
+        <button onclick="copyToClipboard()" class="btn btn-primary">Copy</button>
         <br/>
     </div>
     <form action="#" th:action="@{/main}" method="get" class="form-custom">
