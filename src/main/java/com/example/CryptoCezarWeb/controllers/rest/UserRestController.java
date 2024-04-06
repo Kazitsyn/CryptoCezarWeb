@@ -1,6 +1,6 @@
-package com.example.CryptoCezarWeb.controller.rest;
+package com.example.CryptoCezarWeb.controllers.rest;
 
-import com.example.CryptoCezarWeb.service.UserService;
+import com.example.CryptoCezarWeb.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

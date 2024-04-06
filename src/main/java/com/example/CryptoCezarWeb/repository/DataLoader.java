@@ -1,6 +1,6 @@
 package com.example.CryptoCezarWeb.repository;
 
-import com.example.CryptoCezarWeb.model.LayoutEntity;
+import com.example.CryptoCezarWeb.models.LayoutEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

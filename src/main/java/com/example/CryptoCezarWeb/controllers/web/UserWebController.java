@@ -1,9 +1,9 @@
-package com.example.CryptoCezarWeb.controller.web;
+package com.example.CryptoCezarWeb.controllers.web;
 
-import com.example.CryptoCezarWeb.domain.FormData;
-import com.example.CryptoCezarWeb.model.LayoutEntity;
-import com.example.CryptoCezarWeb.service.CryptoService;
-import com.example.CryptoCezarWeb.service.LayoutService;
+import com.example.CryptoCezarWeb.models.FormData;
+import com.example.CryptoCezarWeb.models.LayoutEntity;
+import com.example.CryptoCezarWeb.services.CryptoService;
+import com.example.CryptoCezarWeb.services.LayoutService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -38,16 +38,11 @@
     </select>
     <br/>
   </div>
-
   <input type="submit" class="btn btn-primary" value="Do Cesar shift">
 </form>
-
 </div>
-
 <div class="container">
-
     <h1 class="main-title">All layout list</h1>
-
     <table class="table table-hover">
         <thead class="table-secondary">
         <tr>
@@ -58,22 +53,14 @@
             <th></th>
         </tr>
         </thead>
-
         <tbody>
         <tr th:each="layout : ${layouts}">
-
             <td>
                 <strong th:text="${layout.getId}" class="id-user"></strong>
             </td>
-
             <td th:text="${layout.getTitle}"></td>
-
             <td th:text="${layout.getContent}"></td>
-
             <td th:text="${layout.getStatusBuild}"></td>
-
-
-
         </tr>
         </tbody>
         <td><a class="new-layout" th:href="@{/add-layout}" type="button">new layout</a></td>

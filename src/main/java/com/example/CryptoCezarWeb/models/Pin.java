@@ -1,4 +1,4 @@
-package com.example.CryptoCezarWeb.domain;
+package com.example.CryptoCezarWeb.models;
 
 import lombok.Getter;
 import lombok.Setter;

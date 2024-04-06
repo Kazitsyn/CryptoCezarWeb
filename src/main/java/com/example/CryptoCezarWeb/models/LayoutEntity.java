@@ -1,4 +1,4 @@
-package com.example.CryptoCezarWeb.model;
+package com.example.CryptoCezarWeb.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

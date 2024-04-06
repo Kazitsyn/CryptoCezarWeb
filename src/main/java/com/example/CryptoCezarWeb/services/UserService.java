@@ -1,6 +1,6 @@
-package com.example.CryptoCezarWeb.service;
+package com.example.CryptoCezarWeb.services;
 
-import com.example.CryptoCezarWeb.domain.Crypto;
+import com.example.CryptoCezarWeb.models.Crypto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Service;

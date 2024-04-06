@@ -1,4 +1,4 @@
-package com.example.CryptoCezarWeb.service;
+package com.example.CryptoCezarWeb.services;
 
 import org.springframework.stereotype.Service;
 

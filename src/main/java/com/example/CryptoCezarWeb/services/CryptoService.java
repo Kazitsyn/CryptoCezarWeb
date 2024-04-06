@@ -1,8 +1,8 @@
-package com.example.CryptoCezarWeb.service;
+package com.example.CryptoCezarWeb.services;
 
-import com.example.CryptoCezarWeb.domain.Crypto;
-import com.example.CryptoCezarWeb.domain.FormData;
-import com.example.CryptoCezarWeb.model.LayoutEntity;
+import com.example.CryptoCezarWeb.models.Crypto;
+import com.example.CryptoCezarWeb.models.FormData;
+import com.example.CryptoCezarWeb.models.LayoutEntity;
 import org.springframework.stereotype.Service;
 
 @Service

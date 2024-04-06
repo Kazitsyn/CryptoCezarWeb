@@ -1,6 +1,6 @@
-package com.example.CryptoCezarWeb.domain;
+package com.example.CryptoCezarWeb.models;
 
-import com.example.CryptoCezarWeb.service.PinCodeService;
+import com.example.CryptoCezarWeb.services.PinCodeService;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 

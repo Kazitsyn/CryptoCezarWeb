@@ -1,6 +1,6 @@
-package com.example.CryptoCezarWeb.service;
+package com.example.CryptoCezarWeb.services;
 
-import com.example.CryptoCezarWeb.model.LayoutEntity;
+import com.example.CryptoCezarWeb.models.LayoutEntity;
 import com.example.CryptoCezarWeb.repository.LayoutRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
