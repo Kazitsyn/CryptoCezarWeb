@@ -2,8 +2,9 @@ package com.example.CryptoCezarWeb.controllers.web;
 
 import com.example.CryptoCezarWeb.models.FormData;
 import com.example.CryptoCezarWeb.models.LayoutEntity;
-import com.example.CryptoCezarWeb.services.CryptoService;
 import com.example.CryptoCezarWeb.services.LayoutService;
+import com.example.CryptoCezarWeb.services.iServiceLayoutEntity;
+import com.example.CryptoCezarWeb.services.iServiceWeb;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +17,8 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 public class UserWebController {
-    private final LayoutService layoutService;
-    private CryptoService cryptoService;
+    private final iServiceLayoutEntity layoutService;
+    private iServiceWeb serviceWeb;
 
     /**
      * Главная страница
@@ -44,7 +45,7 @@ public class UserWebController {
      */
     @PostMapping("/main")
     public String webPostMain(FormData formData){
-        cryptoService.init(formData);
+        serviceWeb.init(formData);
         return "redirect:/result";
     }
 
@@ -55,7 +56,7 @@ public class UserWebController {
      */
     @GetMapping("/result")
     public String webHomeGet(Model model){
-        String result = cryptoService.cezar();
+        String result = serviceWeb.cezar();
         model.addAttribute("message", result);
         return "result";
     }

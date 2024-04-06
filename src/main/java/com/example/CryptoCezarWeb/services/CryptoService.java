@@ -1,19 +1,22 @@
 package com.example.CryptoCezarWeb.services;
 
 import com.example.CryptoCezarWeb.models.Crypto;
+import com.example.CryptoCezarWeb.models.Filters;
 import com.example.CryptoCezarWeb.models.FormData;
 import com.example.CryptoCezarWeb.models.LayoutEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CryptoService {
+public class CryptoService implements iServiceWeb {
     private final Crypto crypto;
     private final LayoutService layoutService;
     private String word;
+    private final Filters filters;
 
-    public CryptoService(Crypto crypto, LayoutService layoutService) {
+    public CryptoService(Crypto crypto, LayoutService layoutService, Filters filters) {
         this.crypto = crypto;
         this.layoutService = layoutService;
+        this.filters = filters;
     }
 
     /**
@@ -23,10 +26,10 @@ public class CryptoService {
     public void init(FormData formData){
         crypto.setPin(formData.getPinCode());
         crypto.setPasswordSize(formData.getPasswordSize());
-        LayoutEntity layout = layoutService.getLayoutEntityById(filterLongId(formData.getLayout()));
+        LayoutEntity layout = layoutService.getLayoutEntityById(filters.filterLongId(formData.getLayout()));
         crypto.getLayout().setLayout(layout.getContent().toCharArray());
         crypto.setWordSize(formData.getWord().length());
-        this.word = filterCutDomain(formData.getWord());
+        this.word = filters.filterCutDomain(formData.getWord());
 
     }
 
@@ -38,23 +41,5 @@ public class CryptoService {
         return crypto.getCryptoCesarWord(word);
     }
 
-    /**
-     * Фильтр обрезающий символы после точки
-     * @param word исходная строка
-     * @return строка после фильтра
-     */
-    private String filterCutDomain(String word){
-        return word.replaceAll("\\.\\w+$", "");
-    }
 
-    /**
-     * Фильтр вырезания ID
-     * @param word исходная строка
-     * @return ID
-     */
-    private Long filterLongId(String word){
-        int colonIndex = word.indexOf(':');
-        String temp = word.substring(0,colonIndex);
-        return Long.valueOf(temp) ;
-    }
 }
