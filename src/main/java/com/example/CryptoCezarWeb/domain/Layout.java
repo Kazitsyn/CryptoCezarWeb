@@ -1,4 +1,4 @@
-package com.example.CryptoCezarWeb.domen;
+package com.example.CryptoCezarWeb.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,13 +15,6 @@ public class Layout {
             'q','w','e','r','t','y','u','i','o','p',
             'a','s','d','f','g','h','j','k','l',
             'z','x','c','v','b','n','m'};
-//    private LayoutEntity layoutEntity;
-//    private char[] layout ;
-
-//    public void setLayoutEntity(LayoutEntity layout){
-//        this.layoutEntity = layout;
-//        this.layout = layout.getContent().toCharArray();
-//    }
 
     public Layout(char[] layout)
     {

@@ -1,6 +1,6 @@
 package com.example.CryptoCezarWeb.repository;
 
-import com.example.CryptoCezarWeb.domen.LayoutEntity;
+import com.example.CryptoCezarWeb.model.LayoutEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

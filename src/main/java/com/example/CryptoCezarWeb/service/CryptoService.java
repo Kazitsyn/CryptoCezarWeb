@@ -1,9 +1,8 @@
 package com.example.CryptoCezarWeb.service;
 
-import com.example.CryptoCezarWeb.domen.Crypto;
-import com.example.CryptoCezarWeb.domen.FormData;
-import com.example.CryptoCezarWeb.domen.LayoutEntity;
-import lombok.AllArgsConstructor;
+import com.example.CryptoCezarWeb.domain.Crypto;
+import com.example.CryptoCezarWeb.domain.FormData;
+import com.example.CryptoCezarWeb.model.LayoutEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +16,10 @@ public class CryptoService {
         this.layoutService = layoutService;
     }
 
+    /**
+     * Метод инициализации даный в классы решающую криптографическую задачу
+     * @param formData вводимый пакет данный
+     */
     public void init(FormData formData){
         crypto.setPin(formData.getPinCode());
         crypto.setPasswordSize(formData.getPasswordSize());
@@ -27,18 +30,31 @@ public class CryptoService {
 
     }
 
+    /**
+     * вызов решение задачи
+     * @return результат решение задачи
+     */
     public String cezar(){
         return crypto.getCryptoCesarWord(word);
     }
 
+    /**
+     * Фильтр обрезающий символы после точки
+     * @param word исходная строка
+     * @return строка после фильтра
+     */
     private String filterCutDomain(String word){
         return word.replaceAll("\\.\\w+$", "");
     }
 
+    /**
+     * Фильтр вырезания ID
+     * @param word исходная строка
+     * @return ID
+     */
     private Long filterLongId(String word){
         int colonIndex = word.indexOf(':');
         String temp = word.substring(0,colonIndex);
         return Long.valueOf(temp) ;
     }
-
 }

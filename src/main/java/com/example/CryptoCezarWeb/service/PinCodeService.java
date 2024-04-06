@@ -31,7 +31,8 @@ public class PinCodeService {
     }
 
     private int enumeration(int pinNumber, int index){
-        if (getDigitLength(pinNumber) <= index){
+        if (getDigitLength(pinNumber) <= index)
+        {
             index = index - getDigitLength(pinNumber);
         }
         return index;

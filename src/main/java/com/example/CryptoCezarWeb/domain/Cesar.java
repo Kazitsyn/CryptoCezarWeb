@@ -1,4 +1,4 @@
-package com.example.CryptoCezarWeb.domen;
+package com.example.CryptoCezarWeb.domain;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -7,12 +7,6 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class Cesar {
     private Layout layout;
-
-//    public Cesar(Layout layout)
-//    {
-//        this.layout = layout;
-//    }
-
     public char getShift(int index, int shift)
     {
         int i = index;

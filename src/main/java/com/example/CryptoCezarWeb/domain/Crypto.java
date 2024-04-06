@@ -1,4 +1,4 @@
-package com.example.CryptoCezarWeb.domen;
+package com.example.CryptoCezarWeb.domain;
 
 
 import com.example.CryptoCezarWeb.service.PinCodeService;

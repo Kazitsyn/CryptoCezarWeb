@@ -1,9 +1,7 @@
-package com.example.CryptoCezarWeb.domen;
+package com.example.CryptoCezarWeb.domain;
 
 import com.example.CryptoCezarWeb.service.PinCodeService;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -61,7 +59,7 @@ public class BaseCrypto {
     }
 
     /**
-     * Определения индекса в случае когда он не в грацах слова
+     * Определения индекса в случае когда он не в границах слова
      * @param index исходный индекс
      * @param word исходное слово
      * @return новый индекс

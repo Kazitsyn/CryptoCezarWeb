@@ -1,10 +1,9 @@
 package com.example.CryptoCezarWeb.service;
 
-import com.example.CryptoCezarWeb.domen.Crypto;
+import com.example.CryptoCezarWeb.domain.Crypto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Service
 @AllArgsConstructor

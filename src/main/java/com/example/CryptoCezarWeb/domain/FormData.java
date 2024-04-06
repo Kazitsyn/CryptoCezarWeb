@@ -1,6 +1,5 @@
-package com.example.CryptoCezarWeb.domen;
+package com.example.CryptoCezarWeb.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
