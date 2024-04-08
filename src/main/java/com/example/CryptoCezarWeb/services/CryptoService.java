@@ -1,9 +1,6 @@
 package com.example.CryptoCezarWeb.services;
 
-import com.example.CryptoCezarWeb.models.Crypto;
-import com.example.CryptoCezarWeb.models.Filters;
-import com.example.CryptoCezarWeb.models.FormData;
-import com.example.CryptoCezarWeb.models.LayoutEntity;
+import com.example.CryptoCezarWeb.models.*;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,11 +23,16 @@ public class CryptoService implements iServiceWeb {
     public void init(FormData formData){
         crypto.setPin(formData.getPinCode());
         crypto.setPasswordSize(formData.getPasswordSize());
-        LayoutEntity layout = layoutService.getLayoutEntityById(filters.filterLongId(formData.getLayout()));
-        crypto.getLayout().setLayout(layout.getContent().toCharArray());
+        try {
+            LayoutEntity layout = layoutService.getLayoutEntityById(filters.filterLongId(formData.getLayout()));
+            crypto.getLayout().setLayout(layout.getContent().toCharArray());
+        }catch (Exception e){
+            e.getMessage();
+        }finally {
+            crypto.getLayout().setLayout("abcdefghigklmnopqrstuvwxyz".toCharArray());
+        }
         crypto.setWordSize(formData.getWord().length());
         this.word = filters.filterCutDomain(formData.getWord());
-
     }
 
     /**

@@ -66,5 +66,4 @@ public class LayoutService implements iServiceLayoutEntity, iServiceCRUD{
     public LayoutEntity getFirstLayoutEntityByTitle(String title){
         return layoutRepository.getFirstLayoutEntityByTitle(title);
     }
-
 }
