@@ -23,15 +23,13 @@ public class CryptoService implements iServiceWeb {
     public void init(FormData formData){
         crypto.setPin(formData.getPinCode());
         crypto.setPasswordSize(formData.getPasswordSize());
-        try {
+
+        if (layoutService.getLayoutEntityById(filters.filterLongId(formData.getLayout())) != null){
             LayoutEntity layout = layoutService.getLayoutEntityById(filters.filterLongId(formData.getLayout()));
             crypto.getLayout().setLayout(layout.getContent().toCharArray());
-        }catch (Exception e){
-            e.getMessage();
+        }else {
+            crypto.getLayout().setLayout("abcdefghigklmnopqrstuvwxyz".toCharArray());
         }
-//        finally {
-//            crypto.getLayout().setLayout("abcdefghigklmnopqrstuvwxyz".toCharArray());
-//        }
         crypto.setWordSize(formData.getWord().length());
         this.word = filters.filterCutDomain(formData.getWord());
     }

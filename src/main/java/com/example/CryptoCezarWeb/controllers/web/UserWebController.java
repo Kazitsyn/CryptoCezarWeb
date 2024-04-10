@@ -44,7 +44,7 @@ public class UserWebController {
      * @return переадресация на страницу с результатами
      */
     @PostMapping("/main")
-    public String webPostMain(FormData formData){
+    public String webPostMain(FormData formData, LayoutEntity layout){
         serviceWeb.init(formData);
         return "redirect:/result";
     }
@@ -70,7 +70,7 @@ public class UserWebController {
     @GetMapping("/add-layout")
     public String webGetAddLayout(LayoutEntity layout, Model model){
         model.addAttribute("layouts", layoutService.findAll());
-        return "/add-layout";
+        return "add-layout";
     }
 
     /**
