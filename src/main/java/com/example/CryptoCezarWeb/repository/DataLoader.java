@@ -25,5 +25,12 @@ public class DataLoader implements CommandLineRunner {
         layoutEntity2.setContent("qwertyuiopasdfghjklzxcvbnm");
         layoutEntity2.setStatusBuild("Basic");
         layoutRepository.save(layoutEntity2);
+
+        LayoutEntity layoutEntity3 = new LayoutEntity();
+        layoutEntity2.setId(3L);
+        layoutEntity2.setTitle("Keyboard layout EN all");
+        layoutEntity2.setContent("qwertyuiopasdfghjklzxcvbnm1234567890!@#$%^&*()_+-=*");
+        layoutEntity2.setStatusBuild("Basic");
+        layoutRepository.save(layoutEntity2);
     }
 }

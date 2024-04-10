@@ -45,8 +45,11 @@ public class LayoutService implements iServiceLayoutEntity, iServiceCRUD{
      */
     @Override
     public void update(LayoutEntity layout, Long id) {
-        layout.setId(id);
-        layoutRepository.save(layout);
+        if (id != 1L || id != 2L) {
+            layout.setId(id);
+            layoutRepository.save(layout);
+        }
+
     }
 
     /**
@@ -56,7 +59,9 @@ public class LayoutService implements iServiceLayoutEntity, iServiceCRUD{
      */
     @Override
     public void delete(Long id) {
-        layoutRepository.deleteById(id);
+        if (id != 1L || id != 2L){
+            layoutRepository.deleteById(id);
+        }
     }
 
     public String getEntityContentByTitle(String title){

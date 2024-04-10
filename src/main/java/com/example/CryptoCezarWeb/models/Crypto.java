@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-public class Crypto extends BaseCrypto {
+public class Crypto extends BaseCrypto implements iCrypto {
 
 
     /**

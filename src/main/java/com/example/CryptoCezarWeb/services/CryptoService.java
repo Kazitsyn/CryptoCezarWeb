@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CryptoService implements iServiceWeb {
-    private final Crypto crypto;
+    private final iCrypto crypto;
     private final LayoutService layoutService;
     private String word;
     private final Filters filters;
@@ -28,9 +28,10 @@ public class CryptoService implements iServiceWeb {
             crypto.getLayout().setLayout(layout.getContent().toCharArray());
         }catch (Exception e){
             e.getMessage();
-        }finally {
-            crypto.getLayout().setLayout("abcdefghigklmnopqrstuvwxyz".toCharArray());
         }
+//        finally {
+//            crypto.getLayout().setLayout("abcdefghigklmnopqrstuvwxyz".toCharArray());
+//        }
         crypto.setWordSize(formData.getWord().length());
         this.word = filters.filterCutDomain(formData.getWord());
     }

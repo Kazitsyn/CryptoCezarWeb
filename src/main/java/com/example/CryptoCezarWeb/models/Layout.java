@@ -37,6 +37,7 @@ public class Layout {
                 return i;
             }
         }
+        System.err.println("there is no set character in this layout");
         return -1;
     }
 

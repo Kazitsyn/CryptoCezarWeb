@@ -53,9 +53,10 @@ public class BaseCrypto {
      * @param index индекс
      */
     private void changeRegisterAndAddNumber(StringBuilder word, int index){
-        char ch = word.charAt(index);
-        word.setCharAt(index,Character.toUpperCase(ch));
-        word.append(index);
+        int i = enumerationIndex(index,word);
+        char ch = word.charAt(i);
+        word.setCharAt(i,Character.toUpperCase(ch));
+        word.append(i);
     }
 
     /**
@@ -65,6 +66,12 @@ public class BaseCrypto {
      * @return новый индекс
      */
     private int enumerationIndex(int index, String word){
+        while (word.length() <= index){
+            index = index - word.length();
+        }
+        return index;
+    }
+    private int enumerationIndex(int index, StringBuilder word){
         while (word.length() <= index){
             index = index - word.length();
         }
