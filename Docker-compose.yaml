@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    image: dockerlini/firstrepo:Cesar-0.0.3
+    ports:
+      - "8080:8080"
+    restart: always
+
+
